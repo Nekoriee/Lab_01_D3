@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array test</title>
+	<style>
+		table{
+			margin: 20px 5px;
+			border-collapse:collapse;
+		}
+		table td {
+			padding: 5px 10px;
+			border: thin solid grey;
+		}
+		table tr:nth-child(odd){
+			background: LightGrey;
+		}
+		.options {
+			display: inline-block;
+			margin-right: 25px; 
+		}
+		svg text {
+			font: 8px Verdana;
+		}
+		svg path, line {
+			fill: none;
+			stroke: #333333;
+		}
+	</style>
+</head>
+<body>
+
+<div class="main">
+
+<div id='filter' class='options'>
+<b>Фильтрация:</b>
+<br><br>
+<form>
+	<label for='company_manufacturer'>Название производителя:</label>
+	<input id='company_manufacturer' type='text'><br>
+	<br>
+	
+	<label for='company_location'>Регион производителя:</label>
+	<input id='company_location' type='text'><br>
+	<br>
+	
+	<label for='review_date'>Дата рецензии:</label><br>
+	<label for='review_date_start'>От:</label>
+	<input id='review_date_start' type='number' min=2006 max=2021><br>
+	<label for='review_date_end'>До:</label>
+	<input id='review_date_end' type='number' min=2006 max=2021><br>
+	<br>
+	
+	<label for='country_of_bean_origin'>Страна происхождения:</label>
+	<input id='country_of_bean_origin' type='text'><br>
+	<br>
+	
+	<label for='cocoa_percent'>Процент какао:</label><br>
+	<label for='cocoa_percent_start'>От:</label>
+	<input id='cocoa_percent_start' type='number' min=0 max=100><br>
+	<label for='cocoa_percent_end'>До:</label>
+	<input id='cocoa_percent_end' type='number' min=0 max=100><br>
+	<br>
+	
+	<input id='submit' type='button' value='Найти'>
+	<input id='reset' type='button' value='Сбросить'>
+</form>
+</div>
+
+<div id='sort' class='options'>
+<b>Сортировка:</b>
+<br><br>
+<form>
+	<label>Сортировка 1:</label>
+	<select id="sort_1">
+		<option value=''>Нет</option>
+		<option value='company_manufacturer'>Название производителя</option>
+		<option value='review_date'>Дата рецензии</option>
+		<option value='cocoa_percent'>Процент какао</option>
+	</select>
+	<select id="sort_1_order">
+		<option value='ascending'>По возрастанию</option>
+		<option value='descending'>По убыванию</option>
+	</select>
+	<br><br>
+	
+	<label>Сортировка 2:</label>
+	<select id="sort_2">
+		<option value=''>Нет</option>
+		<option value='company_manufacturer'>Название производителя</option>
+		<option value='review_date'>Дата рецензии</option>
+		<option value='cocoa_percent'>Процент какао</option>
+	</select>
+	<select id="sort_2_order">
+		<option value='ascending'>По возрастанию</option>
+		<option value='descending'>По убыванию</option>
+	</select>
+	<br><br>
+	
+	<label>Сортировка 3:</label>
+	<select id="sort_3">
+		<option value=''>Нет</option>
+		<option value='company_manufacturer'>Название производителя</option>
+		<option value='review_date'>Дата рецензии</option>
+		<option value='cocoa_percent'>Процент какао</option>
+	</select>
+		<select id="sort_3_order">
+		<option value='ascending'>По возрастанию</option>
+		<option value='descending'>По убыванию</option>
+	</select>
+	<br><br>
+	
+	<input id='submit' type='button' value='Найти'>
+	<input id='reset' type='button' value='Сбросить'>
+</form>
+</div>
+
+<div id='chart' class='options'>
+<b>График:</b>
+<br>
+<form>
+	<p>Значение по оси OX</p>
+	
+	<!-- 
+	<input type="radio" id="ox_1" name="ox" value="company_manufacturer" checked><label for="ox_1">Название производителя</label><br>
+	<input type="radio" id="ox_2" name="ox" value="review_date"><label for="ox_2">Страна происхождения</label><br>
+	-->
+	<label>Дата рецензии:</label><br>
+	<label for='ox_min'>От:</label>
+	<input id='ox_min' type='number' value=2006 min=2006 max=2021><br>
+	<label for='ox_max'>До:</label>
+	<input id='ox_max' type='number' value=2021 min=2006 max=2021><br>
+	<br>
+	
+	<p>Значение по оси OY</p>
+	<input type="radio" id="oy_1" name="oy" checked><label for="oy_1">Максимальный процент какао</label><br>
+	<input type="radio" id="oy_2" name="oy"><label for="oy_2">Минимальный процент какао</label><br><br>
+	<input id='submit' type='button' value='Построить'>
+</form>
+</div>
+
+<svg></svg>
+
+<p id="table_title"></p>
+<table id='table'>
+</table>
+</div>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>
